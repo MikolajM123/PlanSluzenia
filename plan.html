@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan zajęć</title>
+</head>
+<body>
+    <h1>Wprowadź swoje imię i nazwisko</h1>
+    <form id="plan-form">
+        <label for="imie-nazwisko">Imię i nazwisko:</label>
+        <input type="text" id="imie-nazwisko" name="imie-nazwisko" required>
+        <button type="submit">Pokaż plan zajęć</button>
+    </form>
+
+    <div id="plan-wynik">
+        <!-- Tu będzie wyświetlany plan zajęć -->
+    </div>
+
+    <script>
+        // Obiekt przechowujący plan zajęć
+        const planZajec = {
+            "Mikołaj Mitka": "Niedziela 10.09: 9:30",
+            "Dawid Rojek": "Niedziela 10.09: 8.00",
+            // Dodaj więcej wpisów według potrzeb
+        };
+
+        // Obsługa formularza
+        const form = document.getElementById("plan-form");
+        const wynik = document.getElementById("plan-wynik");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const imieNazwisko = document.getElementById("imie-nazwisko").value;
+            const zajecia = planZajec[imieNazwisko];
+
+            if (zajecia) {
+                wynik.innerHTML = `<p>Twój plan zajęć: ${zajecia}</p>`;
+            } else {
+                wynik.innerHTML = "<p>Nie znaleziono planu zajęć dla podanego imienia i nazwiska.</p>";
+            }
+        });
+    </script>
+</body>
+</html>
+
